@@ -1,2 +1,5 @@
-import App from "./build/App";
-export default App;
+import boot from "./src/boot/index";
+
+const app = boot();
+
+export default app;
