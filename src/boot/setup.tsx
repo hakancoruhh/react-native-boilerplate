@@ -1,8 +1,7 @@
-import {AppLoading,Font} from "expo";
+import { AppLoading, Font } from "expo";
 import * as React from "react";
 import { Provider } from "react-redux";
-
-
+import configureStore from "./configureStore";
 import App from "../App";
 
 export interface State {
@@ -11,18 +10,16 @@ export interface State {
   isReady: boolean;
 }
 export default class Setup extends React.Component<{}, State> {
-  constructor(props) {
+  constructor(props: any) {
     super(props);
     this.state = {
       isLoading: false,
-      store: configureStore(() => this.setState({ isLoading: false })),
+      store: configureStore(),
       isReady: false
     };
   }
-  componentWillMount() {
-    this.loadFonts();
-  }
-  async loadFonts() {
+
+  async _cacheResourcesAsync() {
     await Font.loadAsync({
       Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf")
     });
@@ -32,12 +29,18 @@ export default class Setup extends React.Component<{}, State> {
 
   render() {
     if (!this.state.isReady || this.state.isLoading) {
-      return <AppLoading />;
+      return (
+        <AppLoading
+          startAsync={this._cacheResourcesAsync}
+          onFinish={() => this.setState({ isReady: true })}
+          onError={console.warn}
+        />
+      );
     }
     return (
-        <Provider store={this.state.store}>
-          <App />
-        </Provider>
+      <Provider store={this.state.store}>
+        <App />
+      </Provider>
     );
   }
 }

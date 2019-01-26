@@ -1,27 +1,14 @@
-import { createStore, applyMiddleware,combineReducers } from 'redux'
-import createSagaMiddleware from 'redux-saga'
-import rootSaga from './saga'
-import getRootReducer from "./reducers";
-import { fromJS } from 'immutable';
+import { createStore, applyMiddleware, compose } from "redux";
+import createSagaMiddleware from "redux-saga";
+import rootSaga from "../saga";
+import getRootReducer from "../reducers";
+//import devTools from "remote-redux-devtools";
 
-const sagaMiddleware = createSagaMiddleware()
+const sagaMiddleware = createSagaMiddleware();
 
-export default function getStore(navReducer) {
-    
-    const store = createStore(
-        getRootReducer(navReducer),
-        {},
-        applyMiddleware(sagaMiddleware)
-    );
-    sagaMiddleware.run(rootSaga)
-    
-    store.subscribe(()=>{
-        
-    });
+export default function configureStore(): object {
+  const enhancer = compose();
 
-    return store;
+  const store = createStore(getRootReducer, enhancer);
+  return store;
 }
-
-
-
-
