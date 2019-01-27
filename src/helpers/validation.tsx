@@ -1,1 +1,1 @@
-const Required = (data:string) => data?true:false;
+const Required = (data: string) => (data ? true : false);

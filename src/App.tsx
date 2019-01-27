@@ -1,7 +1,3 @@
+import AppNavigator from "./navigations";
 
-import AppNavigator from './navigations'
-
-export default  () => (
-    <AppNavigator />
-  );
-  
+export default () => <AppNavigator />;

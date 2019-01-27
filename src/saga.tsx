@@ -1,10 +1,10 @@
 import { call, put, takeEvery, takeLatest, fork } from "redux-saga/effects";
 
-//import globalSaga from './src/containers/Global/saga';
+// import globalSaga from './src/containers/Global/saga';
 
-const rootSaga = function* rootSaga():any {
+const rootSaga = function* rootSaga(): any {
   yield [
-    //fork(globalSaga),
+    // fork(globalSaga),
   ];
 };
 

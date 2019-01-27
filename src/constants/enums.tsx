@@ -1,8 +1,3 @@
-const enums = [
-    {
-        key: 'Male',
-        value: 'Erkek'
-    },
-]
+const enums = [{key: 'Male',value: 'Erkek' }]
 
 export {enums};
