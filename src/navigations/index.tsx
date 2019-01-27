@@ -1,7 +1,14 @@
-import { StackNavigator } from "react-navigation";
+import { createStackNavigator, createAppContainer } from "react-navigation";
+import HomeContainer from "../containers/HomeContainer";
+const AppNavigator = createStackNavigator({
+  HomePage: {
+    screen: HomeContainer
+  }
+});
 
-const AppNavigator = StackNavigator({});
-export default AppNavigator;
+const AppNavigatorContainer = createAppContainer(AppNavigator);
+
+export default AppNavigatorContainer;
 
 export const navReducer = (state: any, action: any) => {
   const newState = AppNavigator.router.getStateForAction(action, state);

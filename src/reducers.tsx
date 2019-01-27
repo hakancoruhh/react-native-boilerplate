@@ -2,8 +2,11 @@ import { combineReducers } from "redux";
 // import { createForms } from 'react-redux-form';
 import { navReducer } from "./navigations";
 
-// import globalReducer from './src/containers/Global/reducer';
+import homeContainerReducer from "./containers/HomeContainer/reducer";
 
-const rootReducer = combineReducers({});
+const rootReducer = combineReducers({
+  navReducer,
+  homeContainerReducer
+});
 
 export default rootReducer;

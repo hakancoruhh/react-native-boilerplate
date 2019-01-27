@@ -1,4 +1,4 @@
 import React from "react";
-import AppNavigator from "./navigations";
+import AppNavigatorContainer from "./navigations";
 
-export default () => <AppNavigator />;
+export default () => <AppNavigatorContainer />;
