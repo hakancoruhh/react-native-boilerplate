@@ -5,17 +5,17 @@ import configureStore from "./configureStore";
 import App from "../App";
 
 export interface State {
-  store: object;
   isLoading: boolean;
   isReady: boolean;
+  store: any;
 }
 export default class Setup extends React.Component<{}, State> {
   constructor(props: any) {
     super(props);
     this.state = {
       isLoading: false,
-      store: configureStore(),
-      isReady: false
+      isReady: false,
+      store: configureStore()
     };
   }
 

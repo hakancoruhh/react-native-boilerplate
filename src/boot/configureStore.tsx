@@ -6,9 +6,12 @@ import getRootReducer from "../reducers";
 
 const sagaMiddleware = createSagaMiddleware();
 
-export default function configureStore(): object {
+function configureStore(initialState?: object): any {
   const enhancer = compose();
 
-  const store = createStore(getRootReducer, enhancer);
-  return store;
+  return createStore(getRootReducer, initialState!, enhancer);
 }
+
+const store = configureStore();
+
+export default store;
